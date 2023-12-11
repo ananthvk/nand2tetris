@@ -11,5 +11,8 @@ CHIP And {
     OUT out;
     
     PARTS:
-    //// Replace this comment with your code.
+    // And can be implemented as follows - 
+    // First perform Nand(a,b) = (a.b)', perform Not to get (a.b)
+    Nand(a=a, b=b, out=nandab);
+    Nand(a=nandab, b=nandab, out=out);
 }
