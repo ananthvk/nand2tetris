@@ -11,5 +11,21 @@ CHIP Mux {
     OUT out;
 
     PARTS:
-    //// Replace this comment with your code.
+    // Truth table for the required operation
+    // sel | a | b | out 
+    //  0  | 0 | 0 |  0  
+    //  0  | 0 | 1 |  0 
+    //  0  | 1 | 0 |  1 
+    //  0  | 1 | 1 |  1 
+    //  1  | 0 | 0 |  0 
+    //  1  | 0 | 1 |  1 
+    //  1  | 1 | 0 |  0 
+    //  1  | 1 | 1 |  1 
+    // Writing the SOP for the above truth table
+    // = S'AB' + S'AB + SA'B + SAB
+    // = S'A + SB
+    Not(in=sel, out=notSel);
+    And(a=a, b=notSel, out=selA);
+    And(a=sel, b=b, out=selB);
+    Or(a=selA, b=selB, out=out);
 }
