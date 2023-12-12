@@ -11,5 +11,12 @@ CHIP Xor {
     OUT out;
 
     PARTS:
-    //// Replace this comment with your code.
+    // XOR can be represented as ab' + a'b
+    // i.e when the inputs are the same it reduces to aa' which equals 0
+    // XOR outputs 1 only when the inputs differ
+    Not(in=a, out=notA);
+    Not(in=b, out=notB);
+    And(a=a, b=notB, out=aAndNotB);
+    And(a=notA, b=b, out=bAndNotA);
+    Or(a=aAndNotB, b=bAndNotA, out=out);
 }
